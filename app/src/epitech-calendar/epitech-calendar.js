@@ -19,7 +19,6 @@ function retrieveEvents(start, end) {
 async function getEvents(start, end) {
     const activities = await retrieveEvents(start, end);
     if (activities.error) return [];
-    console.log(activities);
     const my_activities = activities.filter(el => el.event_registered === 'registered').map(el => ({
         title: el.acti_title,
         room: el.room && el.room.code && el.room.code.split('/')[3] || "Not precised",

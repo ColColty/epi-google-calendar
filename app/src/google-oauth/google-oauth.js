@@ -30,13 +30,10 @@ module.exports = function oauth2google(cb) {
             access_type: 'offline',
             scope: SCOPES
         });
-        console.log('Authorize this app by visiting this url:', authUrl);
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        rl.question('Enter the code from that page here: ', (code) => {
-            rl.close();
+        if (!process.env.TOKEN_ID) {
+            console.log('Authorize this app by visiting this url:', authUrl);
+            console.log('Once you have the code from the page, add it to the environment variable TOKEN_ID');
+        } else {
             oAuth2Client.getToken(code, (err, token) => {
                 if (err) return console.error('Error retrieving access token', err);
                 oAuth2Client.setCredentials(token);
@@ -46,6 +43,6 @@ module.exports = function oauth2google(cb) {
                 });
                 cb(oAuth2Client);
             })
-        })
+        }
     }
 }
