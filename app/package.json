@@ -12,6 +12,8 @@
     "dotenv": "^8.2.0",
     "fetch-cookie": "^0.7.3",
     "googleapis": "^39.2.0",
+    "mongodb": "^3.5.4",
+    "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0"
   }
 }
