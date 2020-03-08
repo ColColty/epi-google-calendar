@@ -7,11 +7,11 @@ const eventTemplate = ({title, room, start, end, color}) => ({
     'description': 'This course take place in the room: ' + room,
     'start': {
         'dateTime': start,
-        'timeZone': process.env.TIME_ZONE || 'Europe/Lisbon'
+        'timeZone': process.env.TIME_ZONE || 'Europe/Paris'
     },
     'end': {
         'dateTime': end,
-        'timeZone': process.env.TIME_ZONE || 'Europe/Lisbon'
+        'timeZone': process.env.TIME_ZONE || 'Europe/Paris'
     },
     'colorId': color
 });
