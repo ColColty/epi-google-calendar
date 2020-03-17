@@ -5,6 +5,11 @@ services:
     build: .
     depends_on:
     - mongo
+    environment:
+      - AUTO_LOGIN='https://intra.epitech.eu/auth-a09d92a10655231a195590024eb2a14f5771ce20'
+      - CALENDAR_ID='a7b8dibef1ec0oks5p86bkqopk@group.calendar.google.com'
+      - TIME_ZONE='Europe/Paris'
+      - IMPORTANT_EVENT_COLOR_ID='10'
 
   mongo:
     image: mongo
