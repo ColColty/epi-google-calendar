@@ -8,7 +8,7 @@ const URL_DB = "mongodb://mongo:27017/";
 const {addEventGC} = require('./src/google-calendar/google-calendar');
 
 const IMPORTANT_EVENT_COLOR_ID = process.env.IMPORTANT_EVENT_COLOR_ID;
-const IMPORTANT_EVENTS_NAMES = ["Delivery", "Follow-up", "Evaluation", "Review"];
+const IMPORTANT_EVENTS_NAMES = ["Delivery", "Follow-up", "Evaluation", "Review", "Keynote", "Meetings"];
 
 
 MongoClient.connect(URL_DB, (err, db) => {
