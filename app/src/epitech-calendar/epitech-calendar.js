@@ -9,12 +9,12 @@ const EPITECH_API_CALENDAR = (start, end) => `https://intra.epitech.eu/planning/
 
 
 async function login() {
-    print(LOGIN_URL);
+    console.log(LOGIN_URL);
     await fetch(LOGIN_URL);
 }
 
 function retrieveEvents(start, end) {
-    print(EPITECH_API_CALENDAR(start, end));
+    console.log(EPITECH_API_CALENDAR(start, end));
     return fetch(EPITECH_API_CALENDAR(start, end)).then(res => res.json());
 }
 
