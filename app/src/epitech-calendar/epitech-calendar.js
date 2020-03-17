@@ -25,11 +25,17 @@ async function getEvents(start, end) {
 
         if (el.rdv_group_registered) {
             startDate = el.rdv_group_registered.split('|')[0];
-            endDate = el.rdv_indiv_registered.split('|')[1];
+            endDate = el.rdv_group_registered.split('|')[1];
         } else if (el.rdv_indiv_registered) {
             startDate = el.rdv_indiv_registered.split('|')[0];
             endDate = el.rdv_indiv_registered.split('|')[1];
         }
+
+        startDate = new Date(startDate);
+        endDate = new Date(endDate);
+
+        startDate.setHours(startDate.getHours() - 1);
+        endDate.setHours(endDate.getHours() - 1);
 
         return ({
             title: el.acti_title,
