@@ -45,7 +45,7 @@ MongoClient.connect(URL_DB, (err, db) => {
         });
     }
 
-    cron.schedule('40 * * * * *', () => {
+    cron.schedule('45 1 * * *', () => {
         googleAuth(main);
     });
 })
