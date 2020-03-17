@@ -19,12 +19,27 @@ function retrieveEvents(start, end) {
 async function getEvents(start, end) {
     const activities = await retrieveEvents(start, end);
     if (activities.error) return [];
-    const my_activities = activities.filter(el => el.event_registered === 'registered').map(el => ({
-        title: el.acti_title,
-        room: el.room && el.room.code && el.room.code.split('/')[3] || "Not precised",
-        start: new Date(el.start),
-        end: new Date(el.end)
-    })).sort((ap1, ap2) => {
+    const my_activities = activities.filter(el => el.event_registered === 'registered').map(el => {
+        var startDate = el.start;
+        var endDate = el.end;
+
+        if (el.rdv_group_registered) {
+            startDate = el.rdv_group_registered.split('|')[0];
+            endDate = el.rdv_indiv_registered.split('|')[1];
+        } else if (el.rdv_indiv_registered) {
+            startDate = el.rdv_indiv_registered.split('|')[0];
+            endDate = el.rdv_indiv_registered.split('|')[1];
+        }
+
+        return ({
+            title: el.acti_title,
+            room: el.room && el.room.code && el.room.code.split('/')[3] || "Not precised",
+            start: new Date(startDate),
+            end: new Date(endDate),
+            rdv_group_registered: el.rdv_group_registered,
+            rdv_indiv_registered: el.rdv_indiv_registered
+        })
+    }).sort((ap1, ap2) => {
         if (ap1.start > ap2.start)
             return 1;
         if (ap1.start < ap2.start)
