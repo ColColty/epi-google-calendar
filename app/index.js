@@ -27,7 +27,10 @@ MongoClient.connect(URL_DB, (err, db) => {
     async function main(auth) {
         await login();
 
-        const activities = await getEvents(new Date().toISOString().split('T')[0], '2020-06-30');
+        let today = new Date()
+        let nextWeek = new Date()
+        nextWeek.setDate(today.getDate() + 14)
+        const activities = await getEvents(today.toISOString().split('T')[0], nextWeek.toISOString().split('T')[0]);
 
         activities.map(el => {
             if (new RegExp(IMPORTANT_EVENTS_NAMES.join("|")).test(el.title)) {
