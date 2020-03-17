@@ -55,9 +55,6 @@ function addEventGC(event, dbo, auth) {
                     if (err) throw err;
                     console.log(`Event ${eventGC.data.id} added to database.`);
                 });
-                setTimeout(() => {
-                    removeEventGC(eventGC.data.id, dbo, auth);
-                }, 30000);
             });
         } else {
             console.log("Event not added to the calendar, already exists");
