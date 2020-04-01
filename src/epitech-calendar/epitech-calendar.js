@@ -36,8 +36,8 @@ async function getEvents(start, end) {
         startDate = new Date(startDate);
         endDate = new Date(endDate);
 
-        startDate.setHours(startDate.getHours() - 1);
-        endDate.setHours(endDate.getHours() - 1);
+        startDate.setHours(startDate.getHours() - 2);
+        endDate.setHours(endDate.getHours() - 2);
 
         return ({
             title: el.acti_title,
