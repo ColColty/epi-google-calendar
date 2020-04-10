@@ -9,7 +9,7 @@ It will be runned alongside the a mongodb instance to save all the already added
 
 When the docker will be runned, it will need some data to work:
 
-- Google Calendar API Credentials [follow this tutorial](##How-to-get-your-Google-API-Credentials)
+- Google Calendar API Credentials [follow this tutorial](##How-to-get-your-Google-API-Credentials)*(Bottom of the README)*
 - GOOGLE CALENDAR ID *This is showed in the settings of the calendar you want to fill*
 - TIME_ZONE *(default to Europe/Paris)*
 - IMPORTANT EVENT COLOR ID [Here you have the different colors IDs](https://lukeboyle.com/blog-posts/2016/04/google-calendar-api---color-id/)
