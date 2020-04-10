@@ -15,7 +15,7 @@ The following settings will be set as environement variables in the `docker-comp
 - GOOGLE CALENDAR ID *This is showed in the settings of the calendar you want to fill*
 - TIME_ZONE *(default to Europe/Paris)*
 - IMPORTANT EVENT COLOR ID [Here you have the different colors IDs](https://lukeboyle.com/blog-posts/2016/04/google-calendar-api---color-id/)
-- AUTO LOGIN LINK *(from EPITECH intranet)*
+- AUTO LOGIN LINK *[from EPITECH intranet](https://intra.epitech.eu/admin/autolog)*
 
 Once all this information is provided, we can run the docker and it will complete your calendar every day with each modification.
 
