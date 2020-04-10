@@ -10,8 +10,10 @@ services:
       - CALENDAR_ID=a7b8dibef1ec0oks5p86bkqopk@group.calendar.google.com
       - TIME_ZONE=Europe/Paris
       - IMPORTANT_EVENT_COLOR_ID=10
+    restart: always
 
   mongo:
     image: mongo
     ports:
-    - "27017:27017"
+      - "27017:27017"
+    restart: always
