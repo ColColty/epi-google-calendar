@@ -33,7 +33,7 @@ Or if you want to remove it from your computer: `docker-compose down`
 - Create credentials for a *Service account key*.
 - Select the option *OAuth Client ID*
 - Configure all the requested things that google ask for.
-- Then select the option: `Web`
+- Then select the option: `Other` and enter the name you want
 - Then once you set the name, click on *Create credentials*
 - Finally when the credentials are created, you have to download them.
 - Then rename the the file downloaded to `credentials.json` and place it in the folder `./auth/`
