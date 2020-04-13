@@ -34,7 +34,7 @@ module.exports = function oauth2google(cb) {
             console.log('Authorize this app by visiting this url:', authUrl);
             console.log('Once you have the code from the page, add it to the environment variable TOKEN_ID');
         } else {
-            oAuth2Client.getToken(code, (err, token) => {
+            oAuth2Client.getToken(process.env.TOKEN_ID, (err, token) => {
                 if (err) return console.error('Error retrieving access token', err);
                 oAuth2Client.setCredentials(token);
                 fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
