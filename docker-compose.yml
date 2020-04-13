@@ -10,10 +10,9 @@ services:
       - CALENDAR_ID=
       - TIME_ZONE=
       - IMPORTANT_EVENT_COLOR_ID=
+      - TOKEN_ID=
     restart: always
 
   mongo:
     image: mongo
-    ports:
-      - "27017:27017"
     restart: always
