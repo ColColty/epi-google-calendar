@@ -4,22 +4,36 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const AUTO_LOGIN = process.env.AUTO_LOGIN;
-const LOGIN_URL = `${AUTO_LOGIN}/user/?format=json`;
 const EPITECH_API_CALENDAR = (start, end) => `https://intra.epitech.eu/planning/load?format=json&start=${start}&end=${end}`;
 
 
-async function login() {
-    console.log(LOGIN_URL);
-    await fetch(LOGIN_URL);
+function createHeaders() {
+    return {
+        accept: "application/json, text/javascript, */*; q=0.01",
+        "accept-language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7,es;q=0.6",
+        "sec-ch-ua":
+          '"Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"macOS"',
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "x-requested-with": "XMLHttpRequest",
+        cookie: `gdpr=1; user=${AUTO_LOGIN}`,
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      }
 }
 
 function retrieveEvents(start, end) {
     console.log(EPITECH_API_CALENDAR(start, end));
-    return fetch(EPITECH_API_CALENDAR(start, end)).then(res => res.json());
+    return fetch(EPITECH_API_CALENDAR(start, end), {
+        headers: createHeaders()
+    }).then(res => res.json());
 }
 
 async function getEvents(start, end) {
     const activities = await retrieveEvents(start, end);
+    console.log(activities)
     if (activities.error) return [];
     const my_activities = activities.filter(el => el.event_registered === 'registered').map(el => {
         var startDate = el.start;
@@ -39,13 +53,15 @@ async function getEvents(start, end) {
         startDate.setHours(startDate.getHours() - 2);
         endDate.setHours(endDate.getHours() - 2);
 
+        console.log(el)
         return ({
             title: el.acti_title,
             room: el.room && el.room.code && el.room.code.split('/')[3] || "Not precised",
             start: new Date(startDate),
             end: new Date(endDate),
             rdv_group_registered: el.rdv_group_registered,
-            rdv_indiv_registered: el.rdv_indiv_registered
+            rdv_indiv_registered: el.rdv_indiv_registered,
+            codeacti: el.codeacti
         })
     }).sort((ap1, ap2) => {
         if (ap1.start > ap2.start)
@@ -58,6 +74,5 @@ async function getEvents(start, end) {
 }
 
 module.exports = {
-    login,
     getEvents
 }
